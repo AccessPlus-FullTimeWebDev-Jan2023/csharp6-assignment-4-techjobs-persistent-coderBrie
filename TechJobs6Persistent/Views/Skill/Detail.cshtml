@@ -1,0 +1,18 @@
+﻿@using TechJobs6Persistent.Models
+@model Skill
+
+@if (Model.Jobs.ToList().Count == 0)
+{
+    <h1>No Jobs with the given skills</h1>
+}
+else
+{
+    <h1>Jobs with the following skill: @Model.SkillName</h1>
+
+    <ul>
+        @foreach (var skill in Model.Jobs)
+        {
+            <li>@skill.Name</li>
+        }
+    </ul>
+}

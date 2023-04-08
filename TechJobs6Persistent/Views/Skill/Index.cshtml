@@ -1,0 +1,25 @@
+﻿@model List<TechJobs6Persistent.Models.Skill>
+
+<h1>All Job Skills</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No skill yet!</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Id
+            <th>Skill Name</th>
+        </tr>
+        @foreach (Skill skill in Model)
+        {
+            <tr>
+                <td>@skill.Id</td>
+                <td><a asp-controller="Skill" asp-action="Detail" asp-route-id="@skill.Id">@skill.SkillName</a></td>
+            </tr>
+        }
+    </table>
+}
+<p><a asp-controller="Skill" asp-action="Add">Add more skills</a></p>
