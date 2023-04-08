@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "DatabaseTesting",
+      "setup": "",
+      "run": "DOTNET_CLI_HOME=/tmp/ DOTNET_NOLOGO=true dotnet test --filter Task",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
