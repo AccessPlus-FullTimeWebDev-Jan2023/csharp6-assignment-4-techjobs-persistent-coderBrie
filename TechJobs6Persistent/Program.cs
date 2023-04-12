@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using TechJobs6Persistent.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+var connectionString = "server=localhost;user=TechJobs;password=Duck&Noodle$;database=TechJobs";
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
+
+builder.Services.AddDbContext<JobDbContext>(dbContextOptions =>
+dbContextOptions.UseMySql(connectionString, serverVersion));
+
+// final statement before run//
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
