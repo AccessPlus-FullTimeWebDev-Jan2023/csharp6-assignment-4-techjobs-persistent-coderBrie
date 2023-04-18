@@ -12,6 +12,9 @@ namespace TechJobs6Persistent.Data
         public DbSet<Job>? Jobs { get; set; }
         public DbSet<Employer>? Employers { get; set; }
         public DbSet<Skill>? Skills { get; set; }
+      
+
+
 
         public JobDbContext(DbContextOptions<JobDbContext> options)
             : base(options)
@@ -20,9 +23,28 @@ namespace TechJobs6Persistent.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //set up your connection for one to many (employer to jobs)
+            //set up your connection for one to many (employer to jobs//
 
-            //set up your connection for many to many (skills to jobs)
+            
+
+            modelBuilder.Entity<Job>()
+                .HasOne(p => p.Employer)
+                .WithMany(b => b.Jobs);
+
+
+            modelBuilder.Entity<Job>()
+     .HasMany(j => j.Skills)
+     .WithMany(s => s.Jobs)
+     .UsingEntity(join => join.ToTable("JobSkill"));
+
+            base.OnModelCreating(modelBuilder);
+
+
         }
+        //set up your connection for many to many (skills to jobs)
+
+
+
     }
+
 }

@@ -39,7 +39,7 @@ namespace TechJobs6Persistent.Controllers
 
         {
             List<Employer> employers = context.Employers.ToList();
-            return View();
+            return View(employers);
         }
 
         [HttpGet]

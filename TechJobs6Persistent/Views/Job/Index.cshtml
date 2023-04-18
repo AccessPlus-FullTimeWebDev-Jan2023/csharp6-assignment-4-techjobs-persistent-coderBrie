@@ -1,5 +1,6 @@
-﻿@using TechJobs6Persistent.Models
-@model List<Job>
+﻿@model List<TechJobs6Persistent.Models.Job>
+@using TechJobs6Persistent.ViewModels;
+
 
 @{
     ViewData["Title"] = "Tech Jobs Persistent";
@@ -28,8 +29,8 @@
             }
         </table>
     }
-    </div>
+</div>
 
-    <p><a asp-controller="Job" asp-action="Add">Add Job</a></p>
+<p><a asp-controller="Job" asp-action="Add">Add Job</a></p>
 
-    <p><a asp-controller="Job" asp-action="Delete">Delete Job</a></p>
+<p><a asp-controller="Job" asp-action="Delete">Delete Job</a></p>
