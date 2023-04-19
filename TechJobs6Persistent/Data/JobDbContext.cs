@@ -37,6 +37,12 @@ namespace TechJobs6Persistent.Data
      .WithMany(s => s.Jobs)
      .UsingEntity(join => join.ToTable("JobSkill"));
 
+
+            modelBuilder.Entity<Job>()
+        .HasMany(j => j.Skills)
+        .WithMany(s => s.Jobs)
+        .UsingEntity(j => j.ToTable("JobSkills"));
+
             base.OnModelCreating(modelBuilder);
 
 
